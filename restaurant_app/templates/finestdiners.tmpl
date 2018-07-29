@@ -1,0 +1,18 @@
+{% if diner_type == "worse_diners" %}
+    {% set data = worst_diners %}
+{% else %}
+    {% set data = finest_diners %}
+{% endif %}
+
+[
+{% for each_diner in data %}
+    {
+    "Restaurant Name": "{{ each_diner.name }}",
+    "City": "{{ each_diner.city }}",
+    "User Rating": "{{ each_diner.rating }} "
+    }
+    {% if not loop.last %}
+        ,
+    {% endif %}
+{% endfor %}
+]
